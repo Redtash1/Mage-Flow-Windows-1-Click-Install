@@ -677,15 +677,35 @@ class MageFlowPipeline:
         return invert_to_noise(self.model, z0, height, width, **kw)
 
 
+def _safe_subpath(root: str, *parts: str) -> str:
+    """Join ``parts`` under ``root`` and confirm the result stays inside ``root``.
+
+    ``root`` is normalized up front; the joined path is normalized **lexically**
+    (``os.path.normpath`` — symlinks are *not* followed, so a Hugging Face cache
+    whose weight files are symlinks into the shared blob store still loads) and
+    rejected if it escapes ``root``. This guards the user-supplied model path
+    against path traversal (CWE-22 / CodeQL ``py/path-injection``).
+    """
+    root = os.path.realpath(root)
+    full = os.path.normpath(os.path.join(root, *parts))
+    if full != root and not full.startswith(root + os.sep):
+        raise ValueError(
+            f"Resolved path {os.path.join(*parts)!r} escapes repo directory {root!r}"
+        )
+    return full
+
+
 def _resolve_repo_dir(repo_dir: str) -> str:
     """Return a local directory for ``repo_dir``.
 
-    If ``repo_dir`` is an existing local path it is returned as-is; otherwise it
-    is treated as a Hugging Face Hub repo id (e.g. ``microsoft/Mage-Flow-4B``)
-    and downloaded/cached via ``huggingface_hub.snapshot_download``.
+    If ``repo_dir`` is an existing local path it is returned as a normalized
+    absolute path; otherwise it is treated as a Hugging Face Hub repo id (e.g.
+    ``microsoft/Mage-Flow``) and downloaded/cached via
+    ``huggingface_hub.snapshot_download``.
     """
-    if os.path.isdir(repo_dir):
-        return repo_dir
+    candidate = os.path.realpath(repo_dir)
+    if os.path.isdir(candidate):
+        return candidate
     from huggingface_hub import snapshot_download
     return snapshot_download(repo_id=repo_dir)
 
@@ -700,8 +720,8 @@ def load_from_repo(repo_dir: str, device: str = "cuda") -> MageFlowModel:
     """
     from safetensors.torch import load_file
     repo_dir = _resolve_repo_dir(repo_dir)
-    mi = json.load(open(os.path.join(repo_dir, "model_index.json")))
-    tcfg = json.load(open(os.path.join(repo_dir, "transformer", "config.json")))
+    mi = json.load(open(_safe_subpath(repo_dir, "model_index.json")))
+    tcfg = json.load(open(_safe_subpath(repo_dir, "transformer", "config.json")))
     # Keys stripped from the checkpoint config before it becomes model_structure.
     # ``schedule_mode`` is a legacy field still present in some config.json files;
     # Keys of the checkpoint config that are NOT MageFlowParams constructor args
@@ -716,7 +736,7 @@ def load_from_repo(repo_dir: str, device: str = "cuda") -> MageFlowModel:
     structure = {k: v for k, v in tcfg.items() if k not in _meta}
 
     def _resolve(p):
-        return p if os.path.isabs(p) else os.path.join(repo_dir, p)
+        return p if os.path.isabs(p) else _safe_subpath(repo_dir, p)
 
     cfg = ModelConfig(
         vae_path=_resolve(mi.get("_vae_source")),
@@ -727,7 +747,7 @@ def load_from_repo(repo_dir: str, device: str = "cuda") -> MageFlowModel:
         static_shift=tcfg.get("static_shift", 6.0),
     )
     model = MageFlowModel(cfg)
-    sd = load_file(os.path.join(repo_dir, "transformer", "diffusion_pytorch_model.safetensors"),
+    sd = load_file(_safe_subpath(repo_dir, "transformer", "diffusion_pytorch_model.safetensors"),
                    device="cpu")
     model.transformer.load_state_dict(sd, strict=False, assign=True)
     model.to(device)
@@ -738,5 +758,5 @@ def load_from_repo(repo_dir: str, device: str = "cuda") -> MageFlowModel:
     model.eval()
     # Diffusers FlowMatchEulerDiscreteScheduler (scheduler/scheduler_config.json).
     model.scheduler = FlowMatchEulerDiscreteScheduler.from_pretrained(
-        os.path.join(repo_dir, "scheduler"))
+        _safe_subpath(repo_dir, "scheduler"))
     return model
