@@ -208,15 +208,27 @@ Each checkpoint is a self-contained diffusers-style repo (`transformer/` + share
 
 ### Installation
 
-Install everything **except** `flash-attn` first, then install `flash-attn` separately with build isolation **off** — it compiles a CUDA extension against your installed torch, so torch must already be present.
+Install everything **except** `flash-attn` first, then install `flash-attn` separately with build isolation **off** — it compiles a CUDA extension against your installed torch, so torch and a matching CUDA toolkit must already be present.
 
 ```bash
 cd Mage/mage_flow
-uv pip install -e .                                    # torch 2.10.0, gradio, … (everything except flash-attn)
-uv pip install --no-build-isolation flash-attn==2.8.3  # builds against the torch above
+uv venv && source .venv/bin/activate
+
+# 1) Pinned, tested dependency set (torch 2.10, transformers 5.5, diffusers 0.38, pillow 12.3, …).
+#    Recommended for reproducibility. `uv pip install -e .` also works, but its loose
+#    bounds may resolve to a newer torch/transformers than the code was tested against.
+uv pip install -r requirements.txt
+uv pip install -e . --no-deps           # the mage-flow package itself
+
+# 2) flash-attn — needs build tools present and a CUDA toolkit whose MAJOR version
+#    matches your torch build (e.g. torch cu12x ↔ nvcc 12.x). A cu13/nvcc-12 mix fails.
+uv pip install setuptools wheel ninja
+uv pip install --no-build-isolation flash-attn==2.8.3
 ```
 
-Plain `pip` is identical (`pip install -e .` then `pip install --no-build-isolation flash-attn==2.8.3`). This registers three commands: `mage-flow`, `mage-flow-edit`, `mage-flow-app`.
+Plain `pip` is equivalent (`pip install -r requirements.txt`, `pip install -e . --no-deps`, then the two flash-attn lines). This registers three commands: `mage-flow`, `mage-flow-edit`, `mage-flow-app`.
+
+> **torch / CUDA:** the default PyPI torch wheel targets the newest CUDA (currently cu13x). If your machine's CUDA toolkit is 12.x, install torch from the matching index first, e.g. `uv pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128`, otherwise the flash-attn build will fail with a CUDA-version mismatch.
 
 ### Python API
 
