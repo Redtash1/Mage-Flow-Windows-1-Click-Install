@@ -352,11 +352,10 @@ A web UI with **Text → Image** and **Image Edit** tabs; models load lazily on 
 ## 📝 Citation
 
 ```bibtex
-@techreport{mageflow2026,
-  title  = {Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing},
-  author = {Microsoft Mage Team},
-  year   = {2026},
-  institution = {Microsoft},
-  url    = {https://github.com/microsoft/Mage}
+@article{zhang2026mageflow,
+  title={Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing},
+  author={Zhang, Xinjie and Zhang, Peng and Zheng, Shicheng and Guo, Jinghao and Jia, Zhaoyang and Shen, Yifei and Guo, Xun and Luo, Yuxuan and Li, Jiahao and Xie, Wenxuan and Pu, Fanyi and Zhang, Xiaoyi and Zhang, Kaichen and Guo, Zongyu and Bi, Tianci and Gui, Dongnan and Liu, Zhening and Wen, Zimo and Zheng, Zihan and Yang, Senqiao and Li, Xiao and Wang, Jinglu and Li, Bin and Lu, Yan},
+  journal={arXiv preprint},
+  year={2026}
 }
 ```
