@@ -1,16 +1,3 @@
----
-license: mit
-library_name: diffusers
-pipeline_tag: text-to-image
-tags:
-  - text-to-image
-  - image-generation
-  - image-editing
-  - diffusion
-  - rectified-flow
-  - mage-flow
----
-
 <h1 align="center">Mage-Flow<br><span style="font-size: 0.55em; font-weight: normal;">An Efficient Native-Resolution Foundation Model for Image Generation and Editing</span></h1>
 
 <p align="center">
@@ -23,7 +10,7 @@ tags:
   <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Base-yellow" height="22" /></a>
   <a href="https://huggingface.co/microsoft/Mage-Flow-Edit"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit-yellow" height="22" /></a>
   <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Turbo-yellow" height="22" /></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green" alt="License: MIT"></a>
+  <a href="https://github.com/microsoft/Mage/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License: MIT"></a>
 </p>
 
 <!-- <p align="center">
