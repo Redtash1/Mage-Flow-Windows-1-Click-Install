@@ -1,18 +1,39 @@
-<h1 align="center"> Mage-Flow <br><sub><sup>An Efficient Native-Resolution Foundation Model for Image Generation and Editing</sup></sub></h1>
+---
+license: mit
+library_name: diffusers
+pipeline_tag: text-to-image
+tags:
+  - text-to-image
+  - image-generation
+  - image-editing
+  - diffusion
+  - rectified-flow
+  - mage-flow
+---
 
-<div align="center">
+<h1 align="center">Mage-Flow<br><span style="font-size: 0.55em; font-weight: normal;">An Efficient Native-Resolution Foundation Model for Image Generation and Editing</span></h1>
 
-[![Project Page](https://img.shields.io/badge/Project%20Page-333399.svg?logo=homepage)](https://microsoft.github.io/Mage)&#160;
-[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?logo=github&logoColor=white)](https://github.com/microsoft/Mage)&#160;
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Base-yellow)](https://huggingface.co/microsoft/Mage-Flow-Base)&#160;
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow-yellow)](https://huggingface.co/microsoft/Mage-Flow)&#160;
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Turbo-yellow)](https://huggingface.co/microsoft/Mage-Flow-Turbo)&#160;
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Edit--Base-yellow)](https://huggingface.co/microsoft/Mage-Flow-Edit-Base)&#160;
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Edit-yellow)](https://huggingface.co/microsoft/Mage-Flow-Edit)&#160;
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Edit--Turbo-yellow)](https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo)&#160;
-[![Mage-Flow Tech Report](https://img.shields.io/badge/Mage--Flow--Tech--Report-b5212f.svg?logo=arxiv)](https://arxiv.org/abs/xxxxx)
+<p align="center">
+  <a href="https://arxiv.org/abs/2601.XXXXX"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
+  <a href="https://microsoft.github.io/Mage"><img alt="Project Page" src="https://img.shields.io/badge/%F0%9F%8C%90-Project%20Page-blue" height="22" /></a>
+  <a href="https://github.com/microsoft/Mage"><img src="https://img.shields.io/badge/Code-GitHub-181717?logo=github" alt="GitHub"></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Base-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Turbo-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Base-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Turbo-yellow" height="22" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green" alt="License: MIT"></a>
+</p>
 
-</div>
+<!-- <p align="center">
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Base-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Turbo-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Base-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit-yellow" height="22" /></a>
+  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Turbo-yellow" height="22" /></a>
+</p> -->
 
 <div align="center">
 <img src="assets/mage-flow-cover.png" width="100%" alt="gallery">
@@ -48,8 +69,8 @@ Together with native-resolution packing and a fused-kernel training infrastructu
 
 Each checkpoint is a self-contained diffusers-style repo (`transformer/` + shared `vae/`, `text_encoder/`, `scheduler/`).
 
-| Model                       | Task        | Variant            | Steps | Hugging Face                                                                                    |
-| :-------------------------- | :---------- | :----------------- | :---: | :---------------------------------------------------------------------------------------------- |
+| Model                       | Task        | Variant            | Steps | Hugging Face                                                                              |
+| :-------------------------- | :---------- | :----------------- | :---: | :---------------------------------------------------------------------------------------- |
 | `Mage-Flow-4B-Base`       | text→image | Base               |  30  | [🤗 microsoft/Mage-Flow-Base](https://huggingface.co/microsoft/Mage-Flow-Base)             |
 | `Mage-Flow-4B`            | text→image | RL-aligned         |  20  | [🤗 microsoft/Mage-Flow](https://huggingface.co/microsoft/Mage-Flow)                       |
 | `Mage-Flow-4B-Turbo`      | text→image | Few-step distilled |   4   | [🤗 microsoft/Mage-Flow-Turbo](https://huggingface.co/microsoft/Mage-Flow-Turbo)           |
@@ -77,7 +98,7 @@ Each checkpoint is a self-contained diffusers-style repo (`transformer/` + share
 </details>
 
 <details>
-<summary><b>Cuisine &amp; still life</b></summary>
+<summary><b>Cuisine & still life</b></summary>
 <div align="center"><img src="assets/cuisine.jpg" width="100%" alt="cuisine"></div>
 </details>
 
@@ -104,87 +125,91 @@ Each checkpoint is a self-contained diffusers-style repo (`transformer/` + share
 </details>
 
 <details>
-<summary><b>Localized content &amp; object editing</b></summary>
+<summary><b>Localized content & object editing</b></summary>
 <div align="center"><img src="assets/edit_gallery_content.jpg" width="100%" alt="content editing"></div>
 </details>
 
 <details>
-<summary><b>Scene, subject &amp; camera transformations</b></summary>
+<summary><b>Scene, subject & camera transformations</b></summary>
 <div align="center"><img src="assets/edit_gallery_scene_subject.jpg" width="100%" alt="scene and subject"></div>
 </details>
 
 <details>
-<summary><b>Appearance &amp; artistic rendering</b></summary>
+<summary><b>Appearance & artistic rendering</b></summary>
 <div align="center"><img src="assets/edit_gallery_appearance.jpg" width="100%" alt="appearance"></div>
 </details>
 
 <details>
-<summary><b>Human-centered &amp; creative editing</b></summary>
+<summary><b>Human-centered & creative editing</b></summary>
 <div align="center"><img src="assets/edit_gallery_human_creative.jpg" width="100%" alt="human-centered and creative"></div>
 </details>
 
 <details>
-<summary><b>Low-level vision &amp; conditional reconstruction</b></summary>
+<summary><b>Low-level vision & conditional reconstruction</b></summary>
 <div align="center"><img src="assets/edit_gallery_lowlevel.jpg" width="100%" alt="low-level vision"></div>
 </details>
 
 <details>
-<summary><b>Bidirectional degradation &amp; restoration</b></summary>
+<summary><b>Bidirectional degradation & restoration</b></summary>
 <div align="center"><img src="assets/edit_gallery_restoration.jpg" width="100%" alt="restoration"></div>
 </details>
 
 ## 📊 Performance
 
+<details>
+<summary><b>Full benchmark tables (text-to-image & image editing) — click to expand</b></summary>
+
 **Text-to-image** — full benchmark suite: GenEval, DPG-Bench, TIIF-Bench (short/long splits), CVTG-2K, OneIG (EN/CN), LongText (EN/CN). Higher is better; GenEval / CVTG-2K / OneIG / LongText on a 0–1 scale, DPG / TIIF on 0–100. The **Type** column marks closed- vs open-source; **bold** / <ins>underline</ins> = best / second-best among **open-source** models (closed-source shown for reference, not ranked); `–` = not reported; ★ = ours.
 
-| Model | Type | #Params | Steps | GenEval | DPG | TIIF-Short | TIIF-Long | CVTG-2K | OneIG-EN | OneIG-CN | LongText-EN | LongText-CN |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Seedream 3.0 | Closed | – | – | 0.84 | 88.27 | 86.02 | 84.31 | 0.592 | 0.530 | 0.528 | 0.896 | 0.878 |
-| Seedream 4.0 | Closed | – | – | 0.84 | 88.63 | – | – | 0.892 | 0.573 | 0.554 | 0.936 | 0.946 |
-| GPT-Image-1 | Closed | – | – | 0.84 | 85.15 | 89.15 | 88.29 | 0.857 | 0.533 | 0.474 | 0.956 | 0.619 |
-| Nano-Banana-Pro | Closed | – | – | 0.83 | 87.16 | – | – | 0.779 | 0.580 | 0.570 | 0.981 | 0.949 |
-| FLUX.1-dev | Open | 12B | 50 | 0.66 | 83.84 | 71.09 | 71.78 | 0.496 | 0.434 | 0.245 | 0.607 | 0.005 |
-| FLUX.1-Krea-dev | Open | 12B | 50 | 0.72 | 86.59 | 80.36 | 81.67 | 0.444 | 0.443 | 0.271 | 0.693 | 0.002 |
-| FLUX.2-dev | Open | 32B | 50 | 0.87 | 87.57 | **88.82** | **88.10** | **0.893** | **0.551** | 0.516 | **0.963** | 0.757 |
-| FLUX.2-Klein-Base-4B | Open | 4B | 50 | 0.78 | 83.02 | 79.94 | 80.01 | 0.656 | 0.485 | 0.366 | 0.554 | 0.071 |
-| FLUX.2-Klein-Base-9B | Open | 9B | 50 | 0.83 | 85.29 | 81.47 | 84.52 | 0.655 | 0.544 | 0.400 | 0.872 | 0.227 |
-| FLUX.2-Klein-4B | Open | 4B | 4 | 0.83 | 85.53 | 78.91 | 79.04 | 0.628 | 0.500 | 0.364 | 0.649 | 0.068 |
-| FLUX.2-Klein-9B | Open | 9B | 4 | 0.86 | 86.20 | 85.22 | 84.13 | 0.424 | 0.538 | 0.406 | 0.872 | 0.226 |
-| Qwen-Image | Open | 20B | 50 | 0.87 | **88.32** | <ins>86.14</ins> | <ins>86.83</ins> | 0.829 | 0.539 | **0.548** | 0.943 | 0.946 |
-| JoyAI-Image | Open | 16B | 50 | – | 88.05 | – | – | 0.874 | 0.542 | 0.521 | **0.963** | **0.963** |
-| HunyuanImage-3.0 | Open | 80B | 50 | 0.72 | 86.10 | – | – | 0.765 | – | – | – | – |
-| LongCat-Image | Open | 6B | 50 | 0.87 | 86.80 | 80.93 | 81.30 | 0.866 | 0.516 | 0.518 | 0.885 | <ins>0.956</ins> |
-| Z-Image-Base | Open | 6B | 50 | 0.84 | <ins>88.14</ins> | 80.20 | 83.04 | 0.867 | <ins>0.546</ins> | <ins>0.535</ins> | 0.935 | 0.936 |
-| Z-Image-Turbo | Open | 6B | 8 | 0.82 | 84.86 | 77.73 | 80.05 | 0.859 | 0.528 | 0.507 | 0.917 | 0.926 |
-| **Mage-Flow-Base** ★ | Open | 4B | 30 | 0.79 | 86.26 | 82.50 | 83.19 | 0.851 | 0.542 | 0.509 | 0.904 | 0.792 |
-| **Mage-Flow** ★ | Open | 4B | 20 | **0.90** | 86.49 | 82.19 | 84.70 | <ins>0.887</ins> | 0.536 | 0.505 | <ins>0.944</ins> | 0.823 |
-| **Mage-Flow-Turbo** ★ | Open | 4B | 4 | <ins>0.88</ins> | 85.48 | 83.58 | 84.16 | 0.873 | 0.523 | 0.491 | 0.911 | 0.801 |
+| Model                        |  Type  | #Params | Steps |     GenEval     |       DPG       |    TIIF-Short    |    TIIF-Long    |     CVTG-2K     |     OneIG-EN     |     OneIG-CN     |   LongText-EN   |   LongText-CN   |
+| :--------------------------- | :----: | :-----: | :---: | :-------------: | :--------------: | :--------------: | :--------------: | :--------------: | :--------------: | :--------------: | :--------------: | :--------------: |
+| Seedream 3.0                 | Closed |   –   |  –  |      0.84      |      88.27      |      86.02      |      84.31      |      0.592      |      0.530      |      0.528      |      0.896      |      0.878      |
+| Seedream 4.0                 | Closed |   –   |  –  |      0.84      |      88.63      |        –        |        –        |      0.892      |      0.573      |      0.554      |      0.936      |      0.946      |
+| GPT-Image-1                  | Closed |   –   |  –  |      0.84      |      85.15      |      89.15      |      88.29      |      0.857      |      0.533      |      0.474      |      0.956      |      0.619      |
+| Nano-Banana-Pro              | Closed |   –   |  –  |      0.83      |      87.16      |        –        |        –        |      0.779      |      0.580      |      0.570      |      0.981      |      0.949      |
+| FLUX.1-dev                   |  Open  |   12B   |  50  |      0.66      |      83.84      |      71.09      |      71.78      |      0.496      |      0.434      |      0.245      |      0.607      |      0.005      |
+| FLUX.1-Krea-dev              |  Open  |   12B   |  50  |      0.72      |      86.59      |      80.36      |      81.67      |      0.444      |      0.443      |      0.271      |      0.693      |      0.002      |
+| FLUX.2-dev                   |  Open  |   32B   |  50  |      0.87      |      87.57      | **88.82** | **88.10** | **0.893** | **0.551** |      0.516      | **0.963** |      0.757      |
+| FLUX.2-Klein-Base-4B         |  Open  |   4B   |  50  |      0.78      |      83.02      |      79.94      |      80.01      |      0.656      |      0.485      |      0.366      |      0.554      |      0.071      |
+| FLUX.2-Klein-Base-9B         |  Open  |   9B   |  50  |      0.83      |      85.29      |      81.47      |      84.52      |      0.655      |      0.544      |      0.400      |      0.872      |      0.227      |
+| FLUX.2-Klein-4B              |  Open  |   4B   |   4   |      0.83      |      85.53      |      78.91      |      79.04      |      0.628      |      0.500      |      0.364      |      0.649      |      0.068      |
+| FLUX.2-Klein-9B              |  Open  |   9B   |   4   |      0.86      |      86.20      |      85.22      |      84.13      |      0.424      |      0.538      |      0.406      |      0.872      |      0.226      |
+| Qwen-Image                   |  Open  |   20B   |  50  |      0.87      | **88.32** | <ins>86.14</ins> | <ins>86.83</ins> |      0.829      |      0.539      | **0.548** |      0.943      |      0.946      |
+| JoyAI-Image                  |  Open  |   16B   |  50  |       –       |      88.05      |        –        |        –        |      0.874      |      0.542      |      0.521      | **0.963** | **0.963** |
+| HunyuanImage-3.0             |  Open  |   80B   |  50  |      0.72      |      86.10      |        –        |        –        |      0.765      |        –        |        –        |        –        |        –        |
+| LongCat-Image                |  Open  |   6B   |  50  |      0.87      |      86.80      |      80.93      |      81.30      |      0.866      |      0.516      |      0.518      |      0.885      | <ins>0.956</ins> |
+| Z-Image-Base                 |  Open  |   6B   |  50  |      0.84      | <ins>88.14</ins> |      80.20      |      83.04      |      0.867      | <ins>0.546</ins> | <ins>0.535</ins> |      0.935      |      0.936      |
+| Z-Image-Turbo                |  Open  |   6B   |   8   |      0.82      |      84.86      |      77.73      |      80.05      |      0.859      |      0.528      |      0.507      |      0.917      |      0.926      |
+| **Mage-Flow-Base** ★  |  Open  |   4B   |  30  |      0.79      |      86.26      |      82.50      |      83.19      |      0.851      |      0.542      |      0.509      |      0.904      |      0.792      |
+| **Mage-Flow** ★       |  Open  |   4B   |  20  | **0.90** |      86.49      |      82.19      |      84.70      | <ins>0.887</ins> |      0.536      |      0.505      | <ins>0.944</ins> |      0.823      |
+| **Mage-Flow-Turbo** ★ |  Open  |   4B   |   4   | <ins>0.88</ins> |      85.48      |      83.58      |      84.16      |      0.873      |      0.523      |      0.491      |      0.911      |      0.801      |
 
 **Image editing** — ImgEdit-Bench (0–5), GEdit-Bench EN/CN (0–10), TextEdit-Bench synthetic/real (0–25). Higher is better; the **Type** column marks closed- vs open-source; **bold** / <ins>underline</ins> = best / second-best among **open-source** models; `–` = not reported; ★ = ours.
 
-| Model | Type | #Params | Steps | ImgEdit | GEdit-EN | GEdit-CN | TextEdit-Syn | TextEdit-Real |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Nano-Banana | Closed | – | – | 4.29 | 7.291 | 7.399 | 16.54 | 18.22 |
-| Seedream 4.0 | Closed | – | – | 4.30 | 7.701 | 7.692 | 14.90 | 18.54 |
-| Seedream 4.5 | Closed | – | – | 4.32 | 7.820 | 7.800 | – | – |
-| Nano-Banana-Pro | Closed | – | – | 4.37 | 7.738 | 7.799 | – | – |
-| Step1X-Edit-v1.2 | Open | 19B | 50 | 3.95 | 7.480 | 7.467 | 9.26 | 12.02 |
-| FLUX.1-Kontext-dev | Open | 12B | 28 | 3.71 | 6.462 | 1.857 | 12.14 | 14.31 |
-| FLUX.2-dev | Open | 32B | 50 | 4.35 | 7.413 | 7.278 | 11.86 | 14.71 |
-| FLUX.2-Klein-Base-4B | Open | 4B | 50 | 3.80 | 7.081 | 7.102 | 11.01 | 13.79 |
-| FLUX.2-Klein-4B | Open | 4B | 4 | 4.01 | 7.717 | 7.750 | 11.84 | 14.46 |
-| FLUX.2-Klein-Base-9B | Open | 9B | 50 | 4.05 | 7.740 | 7.745 | 12.76 | 15.65 |
-| FLUX.2-Klein-9B | Open | 9B | 4 | 4.18 | 8.040 | 8.055 | 12.73 | 15.75 |
-| Z-Image-Edit | Open | 6B | 50 | 4.30 | 7.570 | 7.540 | – | – |
-| Qwen-Image-Edit-2509 | Open | 20B | 50 | 4.31 | 7.480 | 7.467 | 13.40 | 15.81 |
-| Qwen-Image-Edit-2511 | Open | 20B | 50 | <ins>4.51</ins> | 7.877 | 7.819 | 13.53 | <ins>16.81</ins> |
-| LongCat-Image-Edit | Open | 6B | 50 | 4.45 | 7.748 | 7.731 | 12.46 | 14.89 |
-| FireRed-Image-Edit-1.0 | Open | 20B | 50 | **4.56** | 7.943 | 7.887 | **15.19** | **17.23** |
-| JoyAI-Image-Edit | Open | 16B | 50 | 4.46 | **8.276** | <ins>8.125</ins> | <ins>14.80</ins> | **17.23** |
-| **Mage-Flow-Edit-Base** ★ | Open | 4B | 30 | 4.28 | 7.860 | 7.970 | 13.63 | 15.57 |
-| **Mage-Flow-Edit** ★ | Open | 4B | 30 | 4.34 | 8.127 | 8.123 | 14.14 | 16.26 |
-| **Mage-Flow-Edit-Turbo** ★ | Open | 4B | 4 | 4.38 | <ins>8.271</ins> | **8.264** | 12.77 | 15.41 |
+| Model                             |  Type  | #Params | Steps |     ImgEdit     |     GEdit-EN     |     GEdit-CN     |   TextEdit-Syn   |  TextEdit-Real  |
+| :-------------------------------- | :----: | :-----: | :---: | :-------------: | :--------------: | :--------------: | :--------------: | :--------------: |
+| Nano-Banana                       | Closed |   –   |  –  |      4.29      |      7.291      |      7.399      |      16.54      |      18.22      |
+| Seedream 4.0                      | Closed |   –   |  –  |      4.30      |      7.701      |      7.692      |      14.90      |      18.54      |
+| Seedream 4.5                      | Closed |   –   |  –  |      4.32      |      7.820      |      7.800      |        –        |        –        |
+| Nano-Banana-Pro                   | Closed |   –   |  –  |      4.37      |      7.738      |      7.799      |        –        |        –        |
+| Step1X-Edit-v1.2                  |  Open  |   19B   |  50  |      3.95      |      7.480      |      7.467      |       9.26       |      12.02      |
+| FLUX.1-Kontext-dev                |  Open  |   12B   |  28  |      3.71      |      6.462      |      1.857      |      12.14      |      14.31      |
+| FLUX.2-dev                        |  Open  |   32B   |  50  |      4.35      |      7.413      |      7.278      |      11.86      |      14.71      |
+| FLUX.2-Klein-Base-4B              |  Open  |   4B   |  50  |      3.80      |      7.081      |      7.102      |      11.01      |      13.79      |
+| FLUX.2-Klein-4B                   |  Open  |   4B   |   4   |      4.01      |      7.717      |      7.750      |      11.84      |      14.46      |
+| FLUX.2-Klein-Base-9B              |  Open  |   9B   |  50  |      4.05      |      7.740      |      7.745      |      12.76      |      15.65      |
+| FLUX.2-Klein-9B                   |  Open  |   9B   |   4   |      4.18      |      8.040      |      8.055      |      12.73      |      15.75      |
+| Z-Image-Edit                      |  Open  |   6B   |  50  |      4.30      |      7.570      |      7.540      |        –        |        –        |
+| Qwen-Image-Edit-2509              |  Open  |   20B   |  50  |      4.31      |      7.480      |      7.467      |      13.40      |      15.81      |
+| Qwen-Image-Edit-2511              |  Open  |   20B   |  50  | <ins>4.51</ins> |      7.877      |      7.819      |      13.53      | <ins>16.81</ins> |
+| LongCat-Image-Edit                |  Open  |   6B   |  50  |      4.45      |      7.748      |      7.731      |      12.46      |      14.89      |
+| FireRed-Image-Edit-1.0            |  Open  |   20B   |  50  | **4.56** |      7.943      |      7.887      | **15.19** | **17.23** |
+| JoyAI-Image-Edit                  |  Open  |   16B   |  50  |      4.46      | **8.276** | <ins>8.125</ins> | <ins>14.80</ins> | **17.23** |
+| **Mage-Flow-Edit-Base** ★  |  Open  |   4B   |  30  |      4.28      |      7.860      |      7.970      |      13.63      |      15.57      |
+| **Mage-Flow-Edit** ★       |  Open  |   4B   |  30  |      4.34      |      8.127      |      8.123      |      14.14      |      16.26      |
+| **Mage-Flow-Edit-Turbo** ★ |  Open  |   4B   |   4   |      4.38      | <ins>8.271</ins> | **8.264** |      12.77      |      15.41      |
 
+</details>
 
 ## 🏗️ Architecture
 
@@ -239,11 +264,11 @@ Plain `pip` is equivalent (`pip install -r requirements.txt`, `pip install -e . 
 ```python
 from mage_flow import MageFlowPipeline
 
-pipe = MageFlowPipeline.from_pretrained("microsoft/Mage-Flow", device="cuda")
+pipe = MageFlowPipeline.from_pretrained("microsoft/Mage-Flow-Base", device="cuda")
 
 # 1) single image
 img = pipe.generate(["A close-up portrait of an elderly African man with deep wrinkles, wearing a traditional hat, soft natural lighting, ultra realistic."],
-                    steps=20, cfg=5.0, heights=[1024], widths=[1024])[0]
+                    steps=30, cfg=5.0, heights=[1024], widths=[1024])[0]
 img.save("t2i.png")
 
 # 2) batch: several prompts / resolutions / seeds in ONE packed forward per step
@@ -279,25 +304,23 @@ img.save("single_edit_1024x1024.png")
 
 **Parameters** (shared by `generate` / `edit`):
 
-| Parameter                 | Default                            | Description                                                                   |
-| :------------------------ | :--------------------------------- | :---------------------------------------------------------------------------- |
-| `prompts`               | —                                 | string or list of strings; a list is batched into one forward per step        |
-| `ref_images` *(edit)* | —                                 | per prompt: one image/path, or a**list** of images for multi-image edit |
-| `steps`                 | `30`                             | denoising steps — Base`30`, RL `20`, Turbo `4`                         |
-| `cfg`                   | `5.0`                            | classifier-free guidance scale (Turbo:`1.0`)                                |
-| `heights`, `widths`   | `[1024]`                         | per-sample output size, multiple of 16; native resolution`512`–`2048`    |
-| `max_size` *(edit)*   | source size                        | longest output side; short side follows the reference's aspect ratio          |
-| `vl_cond_long_edge` *(edit)* | `384`                       | cap the long edge of the reference image fed to the **VL text encoder** (matches training preprocessing; the VAE/generation path keeps the full output resolution). `0`/`None` disables |
-| `neg_prompts`           | `" "`                            | per-sample negative prompt (applied when`cfg > 1`)                          |
-| `seeds`                 | `42`                             | per-sample seed;`-1` = random                                               |
-| `batch_cfg`             | `True`                           | fuse the CFG conditional + unconditional passes into one packed forward       |
-| `renormalization`       | `False`                          | rescale guided velocity per token (reduces over-saturation at high cfg)       |
-| `static_shift`          | `6.0`                            | override the flow-matching sigma shift                                        |
-| `prompt_template`       | `mage-flow` / `mage-flow-edit` | text-encoder prompt template                                                  |
+| Parameter                        | Default                            | Description                                                                                                                                                                                      |
+| :------------------------------- | :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `prompts`                      | —                                 | string or list of strings; a list is batched into one forward per step                                                                                                                           |
+| `ref_images` *(edit)*        | —                                 | per prompt: one image/path, or a**list** of images for multi-image edit                                                                                                                    |
+| `steps`                        | `30`                             | denoising steps — Base`30`, RL `20`, Turbo `4`                                                                                                                                            |
+| `cfg`                          | `5.0`                            | classifier-free guidance scale (Turbo:`1.0`)                                                                                                                                                   |
+| `heights`, `widths`          | `[1024]`                         | per-sample output size, multiple of 16; native resolution`512`–`2048`                                                                                                                       |
+| `max_size` *(edit)*          | source size                        | longest output side; short side follows the reference's aspect ratio                                                                                                                             |
+| `vl_cond_long_edge` *(edit)* | `384`                            | cap the long edge of the reference image fed to the**VL text encoder** (matches training preprocessing; the VAE/generation path keeps the full output resolution). `0`/`None` disables |
+| `neg_prompts`                  | `" "`                            | per-sample negative prompt (applied when`cfg > 1`)                                                                                                                                             |
+| `seeds`                        | `42`                             | per-sample seed;`-1` = random                                                                                                                                                                  |
+| `batch_cfg`                    | `True`                           | fuse the CFG conditional + unconditional passes into one packed forward                                                                                                                          |
+| `renormalization`              | `False`                          | rescale guided velocity per token (reduces over-saturation at high cfg)                                                                                                                          |
+| `static_shift`                 | `6.0`                            | override the flow-matching sigma shift                                                                                                                                                           |
+| `prompt_template`              | `mage-flow` / `mage-flow-edit` | text-encoder prompt template                                                                                                                                                                     |
 
 ### CLI
-
-Both commands are **batched** — pass several `--prompt` values (sample `i` uses `--seed + i`). Shared flags: `--steps --cfg --height --width --seed --neg_prompt --static_shift --out`; edit adds `--ref` (one per prompt; comma-separate paths for a multi-image edit), `--max_size`, and `--vl_cond_long_edge` (default `384`). `--model_path` takes a **local repo dir or a Hugging Face Hub repo id** (e.g. `microsoft/Mage-Flow-4B`) — HF ids are downloaded and cached automatically.
 
 ```bash
 # text-to-image (two prompts in one batch)
@@ -312,7 +335,21 @@ mage-flow-edit --prompt "Replace the background with a field of sunflowers" "ble
                --model_path microsoft/Mage-Flow-Edit --max_size 1024 --out ./outputs
 ```
 
-> `--height`/`--width` accept **one value** (applied to every prompt) or **one value per prompt** for mixed resolutions. Any per-prompt shape (multiple of 16, native `512`–`2048`) is allowed — all samples pack into a single varlen forward per denoise step.
+| Flag                  | Scope | Meaning                                                                       |
+| :-------------------- | :---: | :---------------------------------------------------------------------------- |
+| `--prompt`            | both  | one or more prompts, run as a batch (sample `i` uses `--seed + i`)            |
+| `--model_path`        | both  | local repo dir or HF Hub repo id (auto-downloaded + cached)                    |
+| `--steps`             | both  | number of denoising steps                                                     |
+| `--cfg`               | both  | classifier-free guidance scale                                                |
+| `--height`            | both  | output height — one value, or one per prompt for mixed resolutions            |
+| `--width`             | both  | output width — one value, or one per prompt for mixed resolutions             |
+| `--seed`              | both  | base seed (sample `i` uses `--seed + i`)                                       |
+| `--neg_prompt`        | both  | negative prompt                                                               |
+| `--static_shift`      | both  | override the flow-matching sigma shift                                         |
+| `--out`               | both  | output directory                                                              |
+| `--ref`               | edit  | reference image per prompt (comma-separate paths for a multi-image edit)      |
+| `--max_size`          | edit  | max size of the reference image                                               |
+| `--vl_cond_long_edge` | edit  | VL-condition long edge (default `384`)                                         |
 
 ### Gradio app
 
@@ -324,13 +361,13 @@ A web UI with **Text → Image** and **Image Edit** tabs; models load lazily on 
 
 **Launch options:**
 
-| Flag | Default | Meaning |
-| :--- | :--- | :--- |
-| `--host` | `0.0.0.0` | bind address |
-| `--port` | `7860` | port |
-| `--device` | `cuda` | inference device |
-| `--share` | off | create a public Gradio share link |
-| `--preload` | *(lazy)* | comma-separated repo ids / paths to load at startup instead of on first use |
+| Flag          | Default     | Meaning                                                                     |
+| :------------ | :---------- | :-------------------------------------------------------------------------- |
+| `--host`    | `0.0.0.0` | bind address                                                                |
+| `--port`    | `7860`    | port                                                                        |
+| `--device`  | `cuda`    | inference device                                                            |
+| `--share`   | off         | create a public Gradio share link                                           |
+| `--preload` | *(lazy)*  | comma-separated repo ids / paths to load at startup instead of on first use |
 
 ## 📝 Citation
 
