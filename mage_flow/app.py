@@ -129,7 +129,7 @@ def build_ui():
                     t_model = gr.Dropdown(list(T2I_MODELS), value="base", label="Model preset")
                     t_custom = gr.Textbox(label="Custom model (optional)", placeholder=_CUSTOM_PH_T2I, lines=1)
                     t_prompt = gr.Textbox(label="Prompt", lines=3,
-                                          placeholder="the Salar de Uyuni mirror surface captured at high noon, with intimate stillness permeating the air. dew beads on every blade of grass. National Geographic editorial, cinematic depth, fine-grained natural texture.")
+                                          value="A close-up portrait of an elderly African man with deep wrinkles, wearing a traditional hat, soft natural lighting, ultra realistic.")
                     t_neg = gr.Textbox(label="Negative prompt", value=" ", lines=1)
                     with gr.Row():
                         t_steps = gr.Slider(1, 50, value=30, step=1, label="Steps")
@@ -151,9 +151,10 @@ def build_ui():
                     e_model = gr.Dropdown(list(EDIT_MODELS), value="base", label="Model preset")
                     e_custom = gr.Textbox(label="Custom model (optional)", placeholder=_CUSTOM_PH_EDIT, lines=1)
                     e_prompt = gr.Textbox(label="Edit instruction", lines=2,
-                                          placeholder="change the background to a city street")
+                                          value="change the background to a city street")
                     e_neg = gr.Textbox(label="Negative prompt", value=" ", lines=1)
-                    e_ref = gr.Image(type="pil", label="Reference image", height=280)
+                    e_ref = gr.Image(type="pil", label="Reference image", height=280,
+                                     value=os.path.join(os.path.dirname(__file__), "assets", "dog.jpg"))
                     e_extra = gr.File(file_count="multiple", type="filepath",
                                       label="Extra references (optional, multi-image edit)")
                     with gr.Row():
