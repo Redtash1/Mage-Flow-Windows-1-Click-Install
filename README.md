@@ -34,7 +34,7 @@ The family is organized around a shared **codec-aligned efficiency** philosophy 
 
 | Model | Task | Scale | Code | Report |
 | :--- | :--- | :---: | :--- | :--- |
-| **[Mage-VL](mage_vl/)** | Image & video understanding (vision–language), proactive streaming | 4B | [`mage_vl/`](mage_vl/README.md) | *Coming Soon* |
+| **[Mage-VL](mage_vl/)** | Image & video understanding, proactive streaming | 4B | [`mage_vl/`](mage_vl/README.md) | *Coming Soon* |
 | **[Mage-Flow](mage_flow/)** | Text-to-image generation & instruction-based editing | 4B | [`mage_flow/`](mage_flow/README.md) | [arXiv](https://arxiv.org/abs/xxxxx) |
 
 Both models are compact enough to train, fine-tune, and deploy on modest hardware, yet remain competitive with much larger open systems in their respective domains.
@@ -70,12 +70,11 @@ Both models are compact enough to train, fine-tune, and deploy on modest hardwar
 
 ## 📥 Model Zoo
 
-**Mage-VL** — vision–language (image & video understanding). The **Base** model handles image & video understanding; **Mage-VL-Streaming** adds proactive streaming.
+**Mage-VL** — vision–language (image & video understanding). 
 
 | Model | Task | Scale | Hugging Face |
 | :--- | :--- | :---: | :--- |
-| `Mage-VL-Base` | image & video understanding | 4B | 🚧 Coming soon |
-| `Mage-VL-Streaming` | + proactive streaming | 4B | 🚧 Coming soon |
+| `Mage-VL` | image & video understanding, proactive streaming | 4B | 🚧 Coming soon |
 
 **Mage-Flow** — generation & editing. Each checkpoint is a self-contained diffusers-style repo (`transformer/` + shared `vae/`, `text_encoder/`, `scheduler/`).
 
