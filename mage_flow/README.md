@@ -13,15 +13,6 @@
   <a href="https://github.com/microsoft/Mage/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License: MIT"></a>
 </p>
 
-<!-- <p align="center">
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Base-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Turbo-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Base-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Turbo-yellow" height="22" /></a>
-</p> -->
-
 <div align="center">
 <img src="assets/mage-flow-cover.png" width="100%" alt="gallery">
 </div>
@@ -251,11 +242,11 @@ Plain `pip` is equivalent (`pip install -r requirements.txt`, `pip install -e . 
 ```python
 from mage_flow import MageFlowPipeline
 
-pipe = MageFlowPipeline.from_pretrained("microsoft/Mage-Flow-Base", device="cuda")
+pipe = MageFlowPipeline.from_pretrained("microsoft/Mage-Flow", device="cuda")
 
 # 1) single image
 img = pipe.generate(["A close-up portrait of an elderly African man with deep wrinkles, wearing a traditional hat, soft natural lighting, ultra realistic."],
-                    steps=30, cfg=5.0, heights=[1024], widths=[1024])[0]
+                    steps=20, cfg=5.0, heights=[1024], widths=[1024])[0]
 img.save("t2i.png")
 
 # 2) batch: several prompts / resolutions / seeds in ONE packed forward per step

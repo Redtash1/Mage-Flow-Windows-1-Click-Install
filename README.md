@@ -7,7 +7,7 @@
 </p>
 
 <p>
-  <a href="https://microsoft.github.io/Mage"><img alt="Project Page" src="https://img.shields.io/badge/Project%20Page-333399.svg?logo=homepage" height="22" /></a>
+  <a href="https://microsoft.github.io/Mage"><img alt="Project Page" src="https://img.shields.io/badge/%F0%9F%8C%90-Project%20Page-blue" height="22" /></a>
   &nbsp;
   <a href="https://github.com/microsoft/Mage"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Repo-181717?logo=github&logoColor=white" height="22" /></a>
   &nbsp;
@@ -15,8 +15,10 @@
   &nbsp;
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg" height="22" /></a>
   &nbsp;
-  <a href="https://arxiv.org/abs/xxxxx" target="_blank"><img alt="Mage-Flow Tech Report" src="https://img.shields.io/badge/Mage--Flow--Tech--Report-b5212f.svg?logo=arxiv" height="21px"></a>
+  <a href="https://arxiv.org/abs/2601.XXXXX"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
 </p>
+
+
 
 </div>
 
