@@ -22,7 +22,7 @@ from PIL import Image
 from mage_flow.pipeline import MageFlowPipeline
 
 # Default to Hugging Face repo ids; if MAGEFLOW_HF_DIR is set, use local
-# checkpoint dirs under it instead (local dirs keep the `-4B` naming).
+# checkpoint dirs under it instead (local dir names match the HF repo basename).
 HF_DIR = os.environ.get("MAGEFLOW_HF_DIR")
 
 
@@ -31,14 +31,14 @@ def _repo(hf_id: str, local_name: str) -> str:
 
 
 T2I_MODELS = {
-    "base":  _repo("microsoft/Mage-Flow-Base",  "Mage-Flow-4B-Base"),
-    "rl":    _repo("microsoft/Mage-Flow",       "Mage-Flow-4B"),
-    "turbo": _repo("microsoft/Mage-Flow-Turbo", "Mage-Flow-4B-Turbo"),
+    "base":  _repo("microsoft/Mage-Flow-Base",  "Mage-Flow-Base"),
+    "rl":    _repo("microsoft/Mage-Flow",       "Mage-Flow"),
+    "turbo": _repo("microsoft/Mage-Flow-Turbo", "Mage-Flow-Turbo"),
 }
 EDIT_MODELS = {
-    "base":  _repo("microsoft/Mage-Flow-Edit-Base",  "Mage-Flow-Edit-4B-Base"),
-    "rl":    _repo("microsoft/Mage-Flow-Edit",       "Mage-Flow-Edit-4B"),
-    "turbo": _repo("microsoft/Mage-Flow-Edit-Turbo", "Mage-Flow-Edit-4B-Turbo"),
+    "base":  _repo("microsoft/Mage-Flow-Edit-Base",  "Mage-Flow-Edit-Base"),
+    "rl":    _repo("microsoft/Mage-Flow-Edit",       "Mage-Flow-Edit"),
+    "turbo": _repo("microsoft/Mage-Flow-Edit-Turbo", "Mage-Flow-Edit-Turbo"),
 }
 
 DEVICE = "cuda"
@@ -83,7 +83,7 @@ def run_t2i(model_key, custom_model, prompt, neg_prompt, steps, cfg, height, wid
     return img
 
 
-def run_edit(model_key, custom_model, prompt, ref_img, extra_files, steps, cfg, max_size, seed,
+def run_edit(model_key, custom_model, prompt, neg_prompt, ref_img, extra_files, steps, cfg, max_size, seed,
              progress=gr.Progress(track_tqdm=False)):
     if not (prompt or "").strip():
         raise gr.Error("Edit instruction is empty.")
@@ -100,7 +100,8 @@ def run_edit(model_key, custom_model, prompt, ref_img, extra_files, steps, cfg, 
     pipe = _get_pipe(repo)
     progress(0.4, desc="editing …")
     out = pipe.edit(
-        [prompt], [refs], seeds=[int(seed)], steps=int(steps), cfg=float(cfg),
+        [prompt], [refs], neg_prompts=[neg_prompt or " "], seeds=[int(seed)],
+        steps=int(steps), cfg=float(cfg),
         max_size=int(max_size) if max_size else None,
     )[0]
     return out
@@ -151,6 +152,7 @@ def build_ui():
                     e_custom = gr.Textbox(label="Custom model (optional)", placeholder=_CUSTOM_PH_EDIT, lines=1)
                     e_prompt = gr.Textbox(label="Edit instruction", lines=2,
                                           placeholder="change the background to a city street")
+                    e_neg = gr.Textbox(label="Negative prompt", value=" ", lines=1)
                     e_ref = gr.Image(type="pil", label="Reference image", height=280)
                     e_extra = gr.File(file_count="multiple", type="filepath",
                                       label="Extra references (optional, multi-image edit)")
@@ -164,7 +166,7 @@ def build_ui():
                 with gr.Column(scale=1):
                     e_out = gr.Image(type="pil", label="Output", height=560)
             e_btn.click(run_edit,
-                        [e_model, e_custom, e_prompt, e_ref, e_extra, e_steps, e_cfg, e_max, e_seed],
+                        [e_model, e_custom, e_prompt, e_neg, e_ref, e_extra, e_steps, e_cfg, e_max, e_seed],
                         e_out)
     return demo
 
