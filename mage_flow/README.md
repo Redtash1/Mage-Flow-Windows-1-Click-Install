@@ -262,6 +262,8 @@ imgs = pipe.generate(
 **Image editing:**
 
 ```python
+from mage_flow import MageFlowPipeline
+
 pipe = MageFlowPipeline.from_pretrained("microsoft/Mage-Flow-Edit", device="cuda")
 
 # single reference (path or PIL image)
