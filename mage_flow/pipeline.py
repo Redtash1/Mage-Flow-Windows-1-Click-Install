@@ -534,7 +534,7 @@ def generate_edits(model, prompts, ref_images, neg_prompts=None, seeds=None, ste
                  for i in active]
     if cfg > 1.0:
         pos_instr = [prompts[i] for i in active]
-        neg_instr = [neg_prompts[i] or "" for i in active]
+        neg_instr = [neg_prompts[i] or " " for i in active]
         txt_flat, vec_all, lens_t = _encode_edits_packed(
             model, edit_refs + edit_refs, pos_instr + neg_instr, template, drop_idx, dev)
         txt, txt_cu, txt_mask, vec = _slice_packed(txt_flat, vec_all, lens_t, 0, na, dev)
