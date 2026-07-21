@@ -1,7 +1,8 @@
 # MageFlow inference dependencies.
 #
-# Versions below are pinned to the known-good `visionflow` conda environment
-# (Python 3.12, CUDA 12.8). Loosen the `==` to `>=` if you need flexibility.
+# Validated in a fresh uv env with Python 3.11 and torch 2.13.0 (CUDA 12.6, the
+# `cu126` wheels). torch 2.13.0 fixes a low-severity torch.jit.script advisory
+# (affects <= 2.12.1). Loosen the `==` to `>=` if you need flexibility.
 #
 # Two-step install (flash-attn must build against your torch, isolation OFF):
 #   uv pip install -r requirements.txt
@@ -9,8 +10,8 @@
 # (plain `pip` works the same way.)
 
 # --- core numerics / DL ---
-torch==2.10.0
-torchvision==0.25.0         # reference-image resize in the edit path
+torch==2.13.0
+torchvision==0.28.0         # reference-image resize in the edit path
 numpy==2.4.3                # used by the test/benchmark scripts
 
 # --- diffusion + HF model stack ---

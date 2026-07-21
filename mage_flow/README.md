@@ -217,7 +217,7 @@ Install everything **except** `flash-attn` first, then install `flash-attn` sepa
 cd Mage/mage_flow
 uv venv && source .venv/bin/activate
 
-# 1) Pinned, tested dependency set (torch 2.10, transformers 5.5, diffusers 0.38, pillow 12.3, …).
+# 1) Pinned, tested dependency set (torch 2.13, transformers 5.5, diffusers 0.38, pillow 12.3, …).
 #    Recommended for reproducibility. `uv pip install -e .` also works, but its loose
 #    bounds may resolve to a newer torch/transformers than the code was tested against.
 uv pip install -r requirements.txt
@@ -231,7 +231,7 @@ uv pip install --no-build-isolation flash-attn==2.8.3
 
 Plain `pip` is equivalent (`pip install -r requirements.txt`, `pip install -e . --no-deps`, then the two flash-attn lines). This registers three commands: `mage-flow`, `mage-flow-edit`, `mage-flow-app`.
 
-> **torch / CUDA:** the default PyPI torch wheel targets the newest CUDA (currently cu13x). If your machine's CUDA toolkit is 12.x, install torch from the matching index first, e.g. `uv pip install torch==2.10.0 torchvision==0.25.0 --index-url https://download.pytorch.org/whl/cu128`, otherwise the flash-attn build will fail with a CUDA-version mismatch.
+> **torch / CUDA:** the default PyPI torch wheel targets the newest CUDA (currently cu13x). If your machine's CUDA toolkit is 12.x, install torch from the matching index first, e.g. `uv pip install torch==2.13.0 torchvision==0.28.0 --index-url https://download.pytorch.org/whl/cu126`, otherwise the flash-attn build will fail with a CUDA-version mismatch. (torch 2.13.0 ships cu126/cu129/cu130 wheels — pick the one matching your `nvcc`.)
 
 ### Python API
 
