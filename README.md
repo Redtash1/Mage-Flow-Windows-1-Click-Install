@@ -98,13 +98,11 @@ Each model is self-contained in its own directory with a dedicated README:
 
 ```bibtex
 @techreport{mageflow2026,
-  title       = {Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing},
-  author      = {Microsoft Mage Team},
-  year        = {2026},
+  title  = {Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing},
+  author = {Microsoft Mage Team},
+  year   = {2026},
   institution = {Microsoft},
-  eprint      = {xxxxx},
-  archivePrefix = {arXiv},
-  url         = {https://arxiv.org/abs/xxxxx}
+  url    = {https://github.com/microsoft/Mage}
 }
 
 @techreport{magevl2026,
