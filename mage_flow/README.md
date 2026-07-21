@@ -1,7 +1,7 @@
 <h1 align="center">Mage-Flow<br><span style="font-size: 0.55em; font-weight: normal;">An Efficient Native-Resolution Foundation Model for Image Generation and Editing</span></h1>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2601.XXXXX"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
+  <a href="https://github.com/microsoft/Mage/blob/main/assets/mage_flow_tech_report.pdf"><img alt="Tech Report" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
   <a href="https://microsoft.github.io/Mage"><img alt="Project Page" src="https://img.shields.io/badge/%F0%9F%8C%90-Project%20Page-blue" height="22" /></a>
   <a href="https://github.com/microsoft/Mage"><img src="https://img.shields.io/badge/Code-GitHub-181717?logo=github" alt="GitHub"></a>
   <a href="https://huggingface.co/microsoft/Mage-Flow-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Base-yellow" height="22" /></a>

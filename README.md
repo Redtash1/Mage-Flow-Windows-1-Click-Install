@@ -15,7 +15,7 @@
   &nbsp;
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg" height="22" /></a>
   &nbsp;
-  <a href="https://arxiv.org/abs/2601.XXXXX"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
+  <a href="https://github.com/microsoft/Mage/blob/main/assets/mage_flow_tech_report.pdf"><img alt="Tech Report" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
 </p>
 
 
