@@ -141,7 +141,11 @@ def build_ui():
                     t_btn = gr.Button("Generate", variant="primary")
                 with gr.Column(scale=1):
                     t_out = gr.Image(type="pil", label="Output", height=560)
-            t_btn.click(run_t2i,
+            # Clear the previous output first so the stale image isn't shown as
+            # the result while the new one is still transferring (esp. over a
+            # gradio share tunnel, where the image download can lag a few seconds).
+            t_btn.click(lambda: None, None, t_out).then(
+                        run_t2i,
                         [t_model, t_custom, t_prompt, t_neg, t_steps, t_cfg, t_h, t_w, t_seed],
                         t_out)
 
@@ -166,7 +170,8 @@ def build_ui():
                     e_btn = gr.Button("Edit", variant="primary")
                 with gr.Column(scale=1):
                     e_out = gr.Image(type="pil", label="Output", height=560)
-            e_btn.click(run_edit,
+            e_btn.click(lambda: None, None, e_out).then(
+                        run_edit,
                         [e_model, e_custom, e_prompt, e_neg, e_ref, e_extra, e_steps, e_cfg, e_max, e_seed],
                         e_out)
     return demo
