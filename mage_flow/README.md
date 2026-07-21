@@ -3,13 +3,14 @@
 <div align="center">
 
 [![Project Page](https://img.shields.io/badge/Project%20Page-333399.svg?logo=homepage)](https://microsoft.github.io/Mage)&#160;
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?logo=github&logoColor=white)](https://github.com/microsoft/Mage)&#160;
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Base-yellow)](https://huggingface.co/microsoft/Mage-Flow-Base)&#160;
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow-yellow)](https://huggingface.co/microsoft/Mage-Flow)&#160;
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Turbo-yellow)](https://huggingface.co/microsoft/Mage-Flow-Turbo)&#160;
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Edit--Base-yellow)](https://huggingface.co/microsoft/Mage-Flow-Edit-Base)&#160;
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Edit-yellow)](https://huggingface.co/microsoft/Mage-Flow-Edit)&#160;
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Checkpoint-Mage--Flow--Edit--Turbo-yellow)](https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo)&#160;
-<a href="https://arxiv.org/abs/xxxxx" target="_blank"><img alt="Mage-Flow Tech Report" src="https://img.shields.io/badge/Mage--Flow--Tech--Report-b5212f.svg?logo=arxiv" height="21px"></a>
+[![Mage-Flow Tech Report](https://img.shields.io/badge/Mage--Flow--Tech--Report-b5212f.svg?logo=arxiv)](https://arxiv.org/abs/xxxxx)
 
 </div>
 
