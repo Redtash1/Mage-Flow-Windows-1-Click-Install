@@ -33,7 +33,7 @@ Together with native-resolution packing and a fused-kernel training infrastructu
 - **Compact & competitive.** A single 4B family for generation *and* editing that matches or beats much larger open systems (Qwen-Image 20B, Z-Image 6B, FLUX.2 32B, FireRed-Image-Edit 20B).
 - **Efficient tokenizer.** Mage-VAE matches FLUX.2-VAE reconstruction fidelity while using **~12× / ~22× fewer encode / decode MACs per pixel**, removing the VAE as the high-resolution bottleneck.
 - **Native resolution.** One checkpoint generates from **512 to 2048** on any aspect ratio, including extreme **4:1** (e.g. `512×2048`, `2048×512`).
-- **System-level speed.** Native-resolution packing (FlashAttention var-len + per-sample 2D RoPE) + fused CUDA kernels raise MFU from **~33% → ~77%** (**~2.5× faster training**); CFG's conditional/unconditional branches run in **one** packed forward.
+- **System-level speed.** Native-resolution packing (FlashAttention var-len + per-sample 2D RoPE) + fused CUDA kernels cut per-step training time from **~1.93 s → ~0.78 s** (**~2.5× faster training**); CFG's conditional/unconditional branches run in **one** packed forward.
 - **Full family.** **Base**, **RL-aligned**, and **4-step Turbo** variants for both generation and editing.
 - **Versatile editing.** Mage-Flow-Edit supports semantic content editing, appearance transformation, image restoration, and structure-aware outputs within a unified image-and-text-conditioned model. See the report's editing galleries.
 - **Interactive latency.** At `1024²` on a single A100: **Mage-Flow-Turbo 0.59 s/image**, **Mage-Flow-Edit-Turbo 1.02 s/edit**, peak memory **~18–20 GB** (lowest among compared systems).
