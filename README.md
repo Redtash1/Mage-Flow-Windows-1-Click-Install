@@ -15,7 +15,7 @@
   &nbsp;
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg" height="22" /></a>
   &nbsp;
-  <a href="https://arxiv.org/abs/2607.19064"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
+  <a href="https://github.com/microsoft/Mage/blob/main/assets/mage_flow_tech_report.pdf"><img alt="Tech Report" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
 </p>
 
 
@@ -35,7 +35,7 @@ The family is organized around a shared **codec-aligned efficiency** philosophy 
 | Model | Task | Scale | Code | Report |
 | :--- | :--- | :---: | :--- | :--- |
 | **[Mage-VL](mage_vl/)** | Image & video understanding, proactive streaming | 4B | [`mage_vl/`](mage_vl/README.md) | *Coming Soon* |
-| **[Mage-Flow](mage_flow/)** | Text-to-image generation & instruction-based editing | 4B | [`mage_flow/`](mage_flow/README.md) | [arXiv](https://arxiv.org/abs/2607.19064) |
+| **[Mage-Flow](mage_flow/)** | Text-to-image generation & instruction-based editing | 4B | [`mage_flow/`](mage_flow/README.md) | [PDF](https://github.com/microsoft/Mage/blob/main/assets/mage_flow_tech_report.pdf) |
 
 Both models are compact enough to train, fine-tune, and deploy on modest hardware, yet remain competitive with much larger open systems in their respective domains.
 
