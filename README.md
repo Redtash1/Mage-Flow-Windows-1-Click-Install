@@ -35,7 +35,7 @@ The family is organized around a shared **codec-aligned efficiency** philosophy 
 | Model | Task | Scale | Code | Report |
 | :--- | :--- | :---: | :--- | :--- |
 | **[Mage-VL](mage_vl/)** | Image & video understanding, proactive streaming | 4B | [`mage_vl/`](mage_vl/README.md) | *Coming Soon* |
-| **[Mage-Flow](mage_flow/)** | Text-to-image generation & instruction-based editing | 4B | [`mage_flow/`](mage_flow/README.md) | [arXiv](https://arxiv.org/abs/xxxxx) |
+| **[Mage-Flow](mage_flow/)** | Text-to-image generation & instruction-based editing | 4B | [`mage_flow/`](mage_flow/README.md) | [arXiv](https://arxiv.org/abs/2607.19064) |
 
 Both models are compact enough to train, fine-tune, and deploy on modest hardware, yet remain competitive with much larger open systems in their respective domains.
 
@@ -100,7 +100,7 @@ Each model is self-contained in its own directory with a dedicated README:
 @article{zhang2026mageflow,
   title={Mage-Flow: An Efficient Native-Resolution Foundation Model for Image Generation and Editing},
   author={Zhang, Xinjie and Zhang, Peng and Zheng, Shicheng and Guo, Jinghao and Jia, Zhaoyang and Shen, Yifei and Guo, Xun and Luo, Yuxuan and Li, Jiahao and Xie, Wenxuan and Pu, Fanyi and Zhang, Xiaoyi and Zhang, Kaichen and Guo, Zongyu and Bi, Tianci and Gui, Dongnan and Liu, Zhening and Wen, Zimo and Zheng, Zihan and Yang, Senqiao and Li, Xiao and Wang, Jinglu and Li, Bin and Lu, Yan},
-  journal={arXiv preprint},
+  journal={arXiv preprint arXiv:2607.19064},
   year={2026}
 }
 ```
