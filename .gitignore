@@ -222,3 +222,4 @@ mage_flow/outputs_test/
 readme*
 assets/image_*
 assets/ocr_*
+mage_flow/.gradio/

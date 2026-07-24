@@ -167,10 +167,8 @@ class FilterVerdict:
     raw: str = ""
 
     def banner(self) -> str:
-        if not self.violates:
-            return ""
-        cat = ", ".join(CATEGORY_DISPLAY.get(c, c) for c in self.categories) or "policy violation"
-        return f"🚫 **Content Filter:** Blocked — `{cat}` · {self.reason}"
+        # Content-filter refusals surface no text description (blank).
+        return ""
 
 
 def _extract_json_object(text: str) -> dict:

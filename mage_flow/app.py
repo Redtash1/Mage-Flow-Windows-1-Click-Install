@@ -31,9 +31,10 @@ def _repo(hf_id: str, local_name: str) -> str:
 
 
 T2I_MODELS = {
-    "base":  _repo("microsoft/Mage-Flow-Base",  "Mage-Flow-Base"),
-    "rl":    _repo("microsoft/Mage-Flow",       "Mage-Flow"),
-    "turbo": _repo("microsoft/Mage-Flow-Turbo", "Mage-Flow-Turbo"),
+    "base":     _repo("microsoft/Mage-Flow-Base",     "Mage-Flow-Base"),
+    "rl":       _repo("microsoft/Mage-Flow",          "Mage-Flow"),
+    "turbo":    _repo("microsoft/Mage-Flow-Turbo",    "Mage-Flow-Turbo"),
+    "sciforma": _repo("microsoft/Mage-Flow-SciForma", "Mage-Flow-SciForma"),
 }
 EDIT_MODELS = {
     "base":  _repo("microsoft/Mage-Flow-Edit-Base",  "Mage-Flow-Edit-Base"),
@@ -135,8 +136,8 @@ def build_ui():
                         t_steps = gr.Slider(1, 50, value=30, step=1, label="Steps")
                         t_cfg = gr.Slider(1.0, 10.0, value=5.0, step=0.5, label="CFG")
                     with gr.Row():
-                        t_h = gr.Slider(256, 1536, value=1024, step=16, label="Height")
-                        t_w = gr.Slider(256, 1536, value=1024, step=16, label="Width")
+                        t_h = gr.Slider(256, 2048, value=1024, step=16, label="Height")
+                        t_w = gr.Slider(256, 2048, value=1024, step=16, label="Width")
                     t_seed = gr.Number(value=42, precision=0, label="Seed")
                     t_btn = gr.Button("Generate", variant="primary")
                 with gr.Column(scale=1):
@@ -164,7 +165,7 @@ def build_ui():
                     with gr.Row():
                         e_steps = gr.Slider(1, 50, value=30, step=1, label="Steps")
                         e_cfg = gr.Slider(1.0, 10.0, value=5.0, step=0.5, label="CFG")
-                    e_max = gr.Slider(0, 1536, value=1024, step=16,
+                    e_max = gr.Slider(0, 2048, value=1024, step=16,
                                       label="Max output side (0 = keep source size)")
                     e_seed = gr.Number(value=42, precision=0, label="Seed")
                     e_btn = gr.Button("Edit", variant="primary")
