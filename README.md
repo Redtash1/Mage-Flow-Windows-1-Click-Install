@@ -135,4 +135,5 @@ Licensing is per-model:
 | Model | License |
 | :--- | :--- |
 | **Mage-VL** | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0) |
+| **Mage-ViT** | [MIT](LICENSE) |
 | **Mage-Flow** | [MIT](LICENSE) |
