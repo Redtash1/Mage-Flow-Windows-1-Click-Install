@@ -172,15 +172,14 @@ JoyAI's high TriggerAcc comes from predicting silence almost everywhere under So
 
 ## 🔬 Key Findings
 
-Beyond the model, the report distills **seven empirical findings** for efficient multimodal training:
+Beyond the model, the report distills **six empirical findings** for efficient multimodal training:
 
-1. **Web-scale pretraining is not essential.** A from-scratch backbone on 100M unlabeled images + 100M video frames matches encoders trained on billions of image-text pairs.
-2. **Variable-resolution pretraining scales monotonically.** Quality keeps improving with the visual-token budget instead of saturating/degrading like fixed-resolution encoders.
-3. **Codec-native tokenization sets a better accuracy–efficiency frontier** — up to **3.5× wall-clock inference speedup** over uniform frame sampling.
-4. **Explicit VideoQA SFT is redundant.** Dense video *captions* + standard image SFT are sufficient for strong zero-shot VideoQA.
-5. **Motion–spatial synergy.** Dynamic video training substantially improves static 2D/3D spatial reasoning.
-6. **AI4AI data pipeline.** Agentic closed-loop feedback + prompt/code co-design systematically lift caption quality and downstream scores (inspired SkillOpt-Lite).
-7. **Zero-Vision SFT for multimodal RL.** Bypassing visual SFT in favor of pure-text reasoning SFT unlocks stronger multimodal RL — a compute-efficient path.
+1. **Variable-resolution pretraining scales monotonically.** Quality keeps improving with the visual-token budget instead of saturating/degrading like fixed-resolution encoders.
+2. **Codec-native tokenization sets a better accuracy–efficiency frontier** — up to **3.5× wall-clock inference speedup** over uniform frame sampling.
+3. **Explicit VideoQA SFT is redundant.** Dense video *captions* + standard image SFT are sufficient for strong zero-shot VideoQA.
+4. **Motion–spatial synergy.** Dynamic video training substantially improves static 2D/3D spatial reasoning.
+5. **AI4AI data pipeline.** Agentic closed-loop feedback + prompt/code co-design systematically lift caption quality and downstream scores (inspired SkillOpt-Lite).
+6. **Zero-Vision SFT for multimodal RL.** Bypassing visual SFT in favor of pure-text reasoning SFT unlocks stronger multimodal RL — a compute-efficient path.
 
 ## 🚀 Quick Start
 
