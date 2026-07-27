@@ -52,7 +52,7 @@ Both models are compact enough to train, fine-tune, and deploy on modest hardwar
 **Highlights**
 
 - **Codec-native & from scratch.** The whole visual stack is trained from scratch; the bio-inspired I/P predictive-patch mechanism (`16×16`) cuts visual-token use by **over 75%** (**~1/8 or less** of dense frame sampling), enabling **8× longer** video training and **up to 3.5×** inference speedup.
-- **Data-efficient tokenizer.** Mage-ViT trains on only **~100M unlabeled images/videos**, yet matches or beats encoders pretrained on billions of image-text pairs (SigLIP2, MoonViT).
+- **Data-efficient tokenizer.** Mage-ViT trains on only **100M unlabeled images + 100M video frames**, yet matches or beats encoders pretrained on billions of image-text pairs (SigLIP2, MoonViT).
 - **Matched-LLM video gains.** With the 4B Qwen3 backbone fixed, swapping in Mage-ViT beats Qwen3-VL-4B on **every** reported video & temporal-grounding benchmark (e.g. **+22.5** QVHighlight, **+11.0** VSI-Bench).
 - **Strong for its size.** On par with Qwen3-VL-4B on static images, and clearly ahead on video understanding and spatial intelligence (**+11.0** VSI-Bench, **+53.1** CrossPoint, **+5.2** EmbSpatial).
 - **Proactive streaming, single model.** A frozen-backbone cognition gate delivers low-latency, event-gated commentary and generalizes to real 2026 World Cup broadcasts.

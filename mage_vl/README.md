@@ -36,7 +36,7 @@ On top of this pair, a **System 1 & System 2 dual-process design** adds proactiv
 
 A **single checkpoint**, `microsoft/Mage-VL`, is one unified model that **simultaneously** provides image & video understanding **and** the proactive streaming gate — the same weights answer offline image/video questions and drive event-gated commentary. It covers every Mage-VL capability: image understanding, frame-sampled video, traditional H.264/HEVC codec video, neural DCVC-RT codec video, and event-gated streaming. The repository bundles the codec processor, the neural codec package, and the proactive gate weights — no separate understanding, NVC, or streaming checkpoint is required.
 
-We additionally release **`microsoft/Mage-ViT`** — the standalone visual encoder from the two-stage, from-scratch ViT pre-training (cluster-discrimination on ~100M unlabeled image/video frames). This is the **ViT-pre-trained checkpoint only**: it has **not** gone through the joint VLM training with the language model. Use it as a data-efficient, codec-native visual encoder or as a drop-in ViT for your own multimodal training.
+We additionally release **`microsoft/Mage-ViT`** — the standalone visual encoder from the two-stage, from-scratch ViT pre-training (cluster-discrimination on 100M unlabeled images + 100M video frames). This is the **ViT-pre-trained checkpoint only**: it has **not** gone through the joint VLM training with the language model. Use it as a data-efficient, codec-native visual encoder or as a drop-in ViT for your own multimodal training.
 
 | Model | Task | Backbone | Hugging Face |
 | :--- | :--- | :--- | :--- |
@@ -174,7 +174,7 @@ JoyAI's high TriggerAcc comes from predicting silence almost everywhere under So
 
 Beyond the model, the report distills **seven empirical findings** for efficient multimodal training:
 
-1. **Web-scale pretraining is not essential.** A from-scratch backbone on ~100M unlabeled frames matches encoders trained on billions of image-text pairs.
+1. **Web-scale pretraining is not essential.** A from-scratch backbone on 100M unlabeled images + 100M video frames matches encoders trained on billions of image-text pairs.
 2. **Variable-resolution pretraining scales monotonically.** Quality keeps improving with the visual-token budget instead of saturating/degrading like fixed-resolution encoders.
 3. **Codec-native tokenization sets a better accuracy–efficiency frontier** — up to **3.5× wall-clock inference speedup** over uniform frame sampling.
 4. **Explicit VideoQA SFT is redundant.** Dense video *captions* + standard image SFT are sufficient for strong zero-shot VideoQA.
