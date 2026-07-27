@@ -17,6 +17,8 @@
   &nbsp;
   <a href="https://www.apache.org/licenses/LICENSE-2.0"><img alt="Mage-VL License: Apache 2.0" src="https://img.shields.io/badge/Mage--VL%20License-Apache%202.0-green.svg" height="22" /></a>
   &nbsp;
+  <a href="https://opensource.org/licenses/MIT"><img alt="Mage-ViT License: MIT" src="https://img.shields.io/badge/Mage--ViT%20License-MIT-green.svg" height="22" /></a>
+  &nbsp;
   <a href="https://arxiv.org/abs/2607.19064"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
   &nbsp;
   <a href="https://github.com/microsoft/Mage/blob/main/assets/mage_vl_tech_report.pdf"><img alt="arXiv Mage-VL" src="https://img.shields.io/badge/arXiv-Mage--VL-b31b1b" height="22" /></a>
