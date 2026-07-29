@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://microsoft.github.io/Mage"><img alt="Project Page" src="https://img.shields.io/badge/%F0%9F%8C%90-Project%20Page-blue" height="22" /></a>
-  <a href="https://github.com/microsoft/Mage/blob/main/assets/mage_vl_tech_report.pdf"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--VL-b31b1b" height="22" /></a>
+  <a href="https://arxiv.org/abs/2607.24904"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--VL-b31b1b" height="22" /></a>
   <a href="https://github.com/microsoft/Mage"><img src="https://img.shields.io/badge/Code-GitHub-181717?logo=github" alt="GitHub" height="22"></a>
   <a href="https://huggingface.co/microsoft/Mage-VL"><img alt="Mage-VL" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--VL-yellow" height="22" /></a>
   <a href="https://huggingface.co/microsoft/Mage-ViT"><img alt="Mage-ViT" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--ViT-yellow" height="22" /></a>
@@ -341,7 +341,7 @@ The gate is trained on codec inputs, so `--video_backend codec` is the intended 
 @article{yang2026magevl,
   title={Mage-VL: An Efficient Codec-Native Streaming Multimodal Foundation Model},
   author={Yang, Senqiao and Zhang, Kaichen and Jia, Zhaoyang and Guo, Jinghao and Shen, Yifei and Zhang, Xinjie and Zhang, Xiaoyi and Wang, Haoqing and Li, Xiao and Zhang, Peng and An, Xiang and Xie, Yin and Liu, Zhening and Guo, Xun and Li, Jiahao and Zheng, Shicheng and Wang, Jinglu and Guo, Zongyu and Xie, Wenxuan and Zheng, Zihan and Luo, Yuxuan and Li, Bin and Lu, Yan},
-  journal={arXiv preprint},
+  journal={arXiv preprint arXiv:2607.24904},
   year={2026}
 }
 ```
