@@ -3,18 +3,11 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2607.19064"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-Mage--Flow-b31b1b" height="22" /></a>
   <a href="https://microsoft.github.io/Mage"><img alt="Project Page" src="https://img.shields.io/badge/%F0%9F%8C%90-Project%20Page-blue" height="22" /></a>
-  <a href="https://github.com/microsoft/Mage"><img src="https://img.shields.io/badge/Code-GitHub-181717?logo=github" alt="GitHub"></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Base-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Turbo-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Base"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Base-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit-yellow" height="22" /></a>
-  <a href="https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo"><img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97-Mage--Flow--Edit--Turbo-yellow" height="22" /></a>
   <a href="https://github.com/microsoft/Mage/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green" alt="License: MIT"></a>
 </p>
 
 <div align="center">
-<img src="assets/mage-flow-cover.png" width="100%" alt="gallery">
+
 </div>
 
 ---
@@ -43,18 +36,7 @@ Together with native-resolution packing and a fused-kernel training infrastructu
 <em>One-to-many editing diversity — Mage-Flow-Edit can generate diverse outputs from a single reference image.</em>
 </div>
 
-## 📥 Model Zoo
 
-Each checkpoint is a self-contained diffusers-style repo (`transformer/` + shared `vae/`, `text_encoder/`, `scheduler/`).
-
-| Model                       | Task        | Variant            | Steps | Hugging Face                                                                              |
-| :-------------------------- | :---------- | :----------------- | :---: | :---------------------------------------------------------------------------------------- |
-| `Mage-Flow-4B-Base`       | text→image | Base               |  30  | [🤗 microsoft/Mage-Flow-Base](https://huggingface.co/microsoft/Mage-Flow-Base)             |
-| `Mage-Flow-4B`            | text→image | RL-aligned         |  20  | [🤗 microsoft/Mage-Flow](https://huggingface.co/microsoft/Mage-Flow)                       |
-| `Mage-Flow-4B-Turbo`      | text→image | Few-step distilled |   4   | [🤗 microsoft/Mage-Flow-Turbo](https://huggingface.co/microsoft/Mage-Flow-Turbo)           |
-| `Mage-Flow-Edit-4B-Base`  | editing     | Base               |  30  | [🤗 microsoft/Mage-Flow-Edit-Base](https://huggingface.co/microsoft/Mage-Flow-Edit-Base)   |
-| `Mage-Flow-Edit-4B`       | editing     | RL-aligned         |  30  | [🤗 microsoft/Mage-Flow-Edit](https://huggingface.co/microsoft/Mage-Flow-Edit)             |
-| `Mage-Flow-Edit-4B-Turbo` | editing     | Few-step distilled |   4   | [🤗 microsoft/Mage-Flow-Edit-Turbo](https://huggingface.co/microsoft/Mage-Flow-Edit-Turbo) |
 
 ## 🖼️ Showcase
 
@@ -207,147 +189,6 @@ Each checkpoint is a self-contained diffusers-style repo (`transformer/` + share
 
 **Post-training** — from `Base`, generation is aligned with **Diffusion-NFT** (prompt following, aesthetics, text rendering, preference) to produce the RL model, and distilled with **decoupled-DMD + adversarial perceptual guidance** into the 4-step `Turbo`. Editing models reuse the recipe, trained on a mixture of generation and editing data to keep the generative prior.
 
-## 🚀 Quick Start
-
-### Installation
-
-Install everything **except** `flash-attn` first, then install `flash-attn` separately with build isolation **off** — it compiles a CUDA extension against your installed torch, so torch and a matching CUDA toolkit must already be present.
-
-```bash
-cd Mage/mage_flow
-uv venv && source .venv/bin/activate
-
-# 1) Pinned, tested dependency set (torch 2.13, transformers 5.5, diffusers 0.38, pillow 12.3, …).
-#    Recommended for reproducibility. `uv pip install -e .` also works, but its loose
-#    bounds may resolve to a newer torch/transformers than the code was tested against.
-uv pip install -r requirements.txt
-uv pip install -e . --no-deps           # the mage-flow package itself
-
-# 2) flash-attn — needs build tools present and a CUDA toolkit whose MAJOR version
-#    matches your torch build (e.g. torch cu12x ↔ nvcc 12.x). A cu13/nvcc-12 mix fails.
-uv pip install setuptools wheel ninja
-uv pip install --no-build-isolation flash-attn==2.8.3
-```
-
-Plain `pip` is equivalent (`pip install -r requirements.txt`, `pip install -e . --no-deps`, then the two flash-attn lines). This registers three commands: `mage-flow`, `mage-flow-edit`, `mage-flow-app`.
-
-> **torch / CUDA:** the default PyPI torch wheel targets the newest CUDA (currently cu13x). If your machine's CUDA toolkit is 12.x, install torch from the matching index first, e.g. `uv pip install torch==2.13.0 torchvision==0.28.0 --index-url https://download.pytorch.org/whl/cu126`, otherwise the flash-attn build will fail with a CUDA-version mismatch. (torch 2.13.0 ships cu126/cu129/cu130 wheels — pick the one matching your `nvcc`.)
-
-### Python API
-
-`pipe.generate(prompts, **kw)` and `pipe.edit(prompts, ref_images, **kw)` return a `list[PIL.Image]` aligned with `prompts`. A `prompts` **list** is batched into one packed forward per denoise step (each sample can have its own resolution/seed).
-
-**Text-to-image:**
-
-```python
-from mage_flow import MageFlowPipeline
-
-pipe = MageFlowPipeline.from_pretrained("microsoft/Mage-Flow", device="cuda")
-
-# 1) single image
-img = pipe.generate(["A close-up portrait of an elderly African man with deep wrinkles, wearing a traditional hat, soft natural lighting, ultra realistic."],
-                    steps=20, cfg=5.0, heights=[1024], widths=[1024])[0]
-img.save("t2i.png")
-
-# 2) batch: several prompts / resolutions / seeds in ONE packed forward per step
-imgs = pipe.generate(
-    ["the Salar de Uyuni mirror surface captured at high noon, with intimate stillness permeating the air. dew beads on every blade of grass. National Geographic editorial, cinematic depth, fine-grained natural texture.", 
-     "A close-up portrait of an elderly African man with deep wrinkles, wearing a traditional hat, soft natural lighting, ultra realistic.", 
-     "An immersive close-up of a steaming bowl of Sichuan mapo tofu over jasmine rice served on a hand-thrown ceramic plate, finished with a wedge of citrus. Surface oils catch a tiny specular highlight. Shot with a Hasselblad H6D-100c, ambient window light, the kind of image that makes the viewer hungry."],
-    heights=[512, 1024, 1792], widths=[2048, 1024, 1024],   # per-sample; 4:1 is fine
-    seeds=[1, 2, 3], steps=20, cfg=5.0,
-)
-```
-
-**Image editing:**
-
-```python
-from mage_flow import MageFlowPipeline
-
-pipe = MageFlowPipeline.from_pretrained("microsoft/Mage-Flow-Edit", device="cuda")
-
-# single reference (path or PIL image)
-img = pipe.edit(["Replace the background with a field of sunflowers"], ["assets/dog.jpg"],
-                steps=30, cfg=5.0, max_size=1024)[0]
-img.save("single_edit.png")
-
-# multi-image edit — ref_images[i] is a LIST of source images
-img = pipe.edit(["blend the object from image 2 into image 1"],
-                [["scene.png", "object.png"]], steps=30, cfg=5.0)[0]
-img.save("multi_edit.png")
-
-# explicit output size (overrides max_size); Turbo edit = 4 steps / cfg 1
-img = pipe.edit(["Replace the background with a field of sunflowers"], ["assets/dog.jpg"],
-                heights=[1024], widths=[1024], steps=4, cfg=1.0)[0]
-img.save("single_edit_1024x1024.png")
-```
-
-**Parameters** (shared by `generate` / `edit`):
-
-| Parameter                        | Default                            | Description                                                                                                                                                                                      |
-| :------------------------------- | :--------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `prompts`                      | —                                 | string or list of strings; a list is batched into one forward per step                                                                                                                           |
-| `ref_images` *(edit)*        | —                                 | per prompt: one image/path, or a**list** of images for multi-image edit                                                                                                                    |
-| `steps`                        | `30`                             | denoising steps — Base`30`, RL `20`, Turbo `4`                                                                                                                                            |
-| `cfg`                          | `5.0`                            | classifier-free guidance scale (Turbo:`1.0`)                                                                                                                                                   |
-| `heights`, `widths`          | `[1024]`                         | per-sample output size, multiple of 16; native resolution`512`–`2048`                                                                                                                       |
-| `max_size` *(edit)*          | source size                        | longest output side; short side follows the reference's aspect ratio                                                                                                                             |
-| `vl_cond_long_edge` *(edit)* | `384`                            | cap the long edge of the reference image fed to the**VL text encoder** (matches training preprocessing; the VAE/generation path keeps the full output resolution). `0`/`None` disables |
-| `neg_prompts`                  | `" "`                            | per-sample negative prompt (applied when`cfg > 1`)                                                                                                                                             |
-| `seeds`                        | `42`                             | per-sample seed;`-1` = random                                                                                                                                                                  |
-| `batch_cfg`                    | `True`                           | fuse the CFG conditional + unconditional passes into one packed forward                                                                                                                          |
-| `renormalization`              | `False`                          | rescale guided velocity per token (reduces over-saturation at high cfg)                                                                                                                          |
-| `static_shift`                 | `6.0`                            | override the flow-matching sigma shift                                                                                                                                                           |
-| `prompt_template`              | `mage-flow` / `mage-flow-edit` | text-encoder prompt template                                                                                                                                                                     |
-
-### CLI
-
-```bash
-# text-to-image (two prompts in one batch)
-mage-flow --prompt "A close-up portrait of an elderly African man with deep wrinkles, wearing a traditional hat, soft natural lighting, ultra realistic." "An immersive landscape of a Greenlandic icefjord at midnight sun, painted by early dawn light, crystal-clear skies adding drama. fine grains of sand carving sharp shadows. Peter Lik gallery print, moody atmosphere, museum-grade composition." \
-          --model_path microsoft/Mage-Flow --steps 20 --cfg 5.0 \
-          --height 1024 512 --width 1024 2048 --seed 42 --out ./outputs
-
-
-# editing (one --ref per prompt; comma-separate sources for multi-image edit)
-mage-flow-edit --prompt "Replace the background with a field of sunflowers" "blend these two images" \
-               --ref assets/dog.jpg "scene.png,object.png" \
-               --model_path microsoft/Mage-Flow-Edit --max_size 1024 --out ./outputs
-```
-
-| Flag                  | Scope | Meaning                                                                       |
-| :-------------------- | :---: | :---------------------------------------------------------------------------- |
-| `--prompt`            | both  | one or more prompts, run as a batch (sample `i` uses `--seed + i`)            |
-| `--model_path`        | both  | local repo dir or HF Hub repo id (auto-downloaded + cached)                    |
-| `--steps`             | both  | number of denoising steps                                                     |
-| `--cfg`               | both  | classifier-free guidance scale                                                |
-| `--height`            | both  | output height — one value, or one per prompt for mixed resolutions            |
-| `--width`             | both  | output width — one value, or one per prompt for mixed resolutions             |
-| `--seed`              | both  | base seed (sample `i` uses `--seed + i`)                                       |
-| `--neg_prompt`        | both  | negative prompt                                                               |
-| `--static_shift`      | both  | override the flow-matching sigma shift                                         |
-| `--out`               | both  | output directory                                                              |
-| `--ref`               | edit  | reference image per prompt (comma-separate paths for a multi-image edit)      |
-| `--max_size`          | edit  | max size of the reference image                                               |
-| `--vl_cond_long_edge` | edit  | VL-condition long edge (default `384`)                                         |
-
-### Gradio app
-
-```bash
-mage-flow-app                     # serve on http://0.0.0.0:7860  (or: python -m mage_flow.app)
-```
-
-A web UI with **Text → Image** and **Image Edit** tabs; models load lazily on first use and are cached. Presets default to the `microsoft/Mage-Flow*` **Hugging Face repos** (downloaded + cached on first use); set `MAGEFLOW_HF_DIR` to load local checkpoint dirs instead.
-
-**Launch options:**
-
-| Flag          | Default     | Meaning                                                                     |
-| :------------ | :---------- | :-------------------------------------------------------------------------- |
-| `--host`    | `0.0.0.0` | bind address                                                                |
-| `--port`    | `7860`    | port                                                                        |
-| `--device`  | `cuda`    | inference device                                                            |
-| `--share`   | off         | create a public Gradio share link                                           |
-| `--preload` | *(lazy)*  | comma-separated repo ids / paths to load at startup instead of on first use |
 
 ## 📝 Citation
 
