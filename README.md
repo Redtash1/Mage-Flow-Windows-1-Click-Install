@@ -1,6 +1,8 @@
 <div align="center">
 
-# Mage-Flow
+# Mage-Flow: 
+
+## An Efficient Native-Resolution Foundation Model for Image Generation and Editing
 
 <p>
   <b>Microsoft Mage Team</b>
@@ -25,7 +27,6 @@
 
 ---
 
-## 🎨 Mage-Flow — Efficient Native-Resolution Generation & Editing
 
 **Mage-Flow** is a compact 4B generative stack for **text-to-image generation** and **instruction-based image editing**, built from two co-designed components: **Mage-VAE** (a lightweight, high-fidelity latent tokenizer) and a **Native-Resolution Multimodal Diffusion Transformer** trained with rectified flow matching. Each task ships in **Base**, **RL-aligned**, and **4-step Turbo** variants.
 
